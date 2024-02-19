@@ -1,0 +1,95 @@
+/*************************************************************/
+/**************** Products Page Design Start *****************/
+/*************************************************************/
+/* table toggle switch start */
+.toggle-switch {
+  position: relative;
+}
+.switch > input {
+  display: none;
+}
+.switch > span::before {
+  content: "";
+  float: right;
+  display: inline-block;
+  margin: 5px 0 5px 10px;
+  border-radius: 7px;
+  width: 35px;
+  height: 15px;
+  background-color: rgb(0, 0, 0, 0.38);
+  vertical-align: top;
+  transition: background-color 0.2s, opacity 0.2s;
+}
+.switch > span::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  right: 19px;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  background-color: #fff;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  transition: background-color 0.2s, transform 0.2s;
+}
+.switch > input:checked + span::before {
+  background-color: rgba(0, 0, 255, 0.651);
+}
+.switch > input:checked + span::after {
+  background-color: blue;
+  transform: translateX(18px);
+}
+/* table toggle switch end */
+
+/* Pagination Design start */
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0px 5px;
+  margin: 16px 0;
+  justify-content: right;
+}
+.pagination li {
+  margin-right: 5px;
+}
+.pagination a {
+  color: #000000;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid blue;
+  border-radius: 4px;
+}
+.pagination .active a {
+  background-color: blue;
+  color: #fff;
+}
+.previous-link:hover,
+.next-link:hover {
+  background-color: blue;
+  color: #fff;
+}
+@media screen and (max-width: 768px) {
+  .pagination {
+    display: flex;
+    justify-content: left;
+  }
+}
+/* Pagination Design end */
+/*************************************************************/
+/***************** Products Page Design End ******************/
+/*************************************************************/
+
+/*************************************************************/
+/*************** Add Product Page Design Start ***************/
+/*************************************************************/
+.box-shadow {
+  box-shadow: 0px 2px 8px -2px rgba(0, 0, 0, 0.35);
+}
+
+.single-title {
+  border-radius: 8px 8px 0px 0px;
+  box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.35);
+}
+
+/**************** Add Product Page Design End ****************/
