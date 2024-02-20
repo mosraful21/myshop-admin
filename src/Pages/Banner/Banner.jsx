@@ -57,13 +57,15 @@ const Banner = () => {
             className="w-full p-1.5 border border-gray-400 rounded-md focus:outline-blue-400"
             required
           />
-          <input
-            type="text"
-            name="url"
-            placeholder="Banner URL Link"
+
+          <select
+            name="type"
             className="w-full p-1.5 border border-gray-400 rounded-md focus:outline-blue-400"
-            required
-          />
+          >
+            <option value="banner">Banner</option>
+            <option value="shortBanner">Short Banner</option>
+          </select>
+
           <input
             type="file"
             name="photo"
@@ -89,7 +91,7 @@ const Banner = () => {
             <tr>
               <th className="p-2 border">Photo</th>
               <th className="p-2 border">Name</th>
-              <th className="p-2 border">URL</th>
+              <th className="p-2 border">Banner_Type</th>
               <th className="p-2 border">Action</th>
             </tr>
           </thead>
@@ -110,9 +112,7 @@ const Banner = () => {
                   )}
                 </td>
                 <td className="p-2 border">{brand.title}</td>
-                <td className="p-2 border">
-                  <a href={brand.url}>{brand.url}</a>
-                </td>
+                <td className="p-2 border">{brand.type}</td>
                 <td className="p-2 border">
                   <div className="flex items-center justify-around gap-3">
                     <button

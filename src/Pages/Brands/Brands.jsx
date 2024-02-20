@@ -49,7 +49,7 @@ const Brands = () => {
         onSubmit={handleSubmit}
         className="border-2 border-blue-400 md:p-4 p-2"
       >
-        <div className="grid md:grid-cols-3 gap-2">
+        <div className="grid md:grid-cols-2 gap-2">
           <input
             type="text"
             name="name"
@@ -57,13 +57,7 @@ const Brands = () => {
             className="w-full p-1.5 border border-gray-400 rounded-md focus:outline-blue-400"
             required
           />
-          <input
-            type="text"
-            name="url"
-            placeholder="Brand URL Link"
-            className="w-full p-1.5 border border-gray-400 rounded-md focus:outline-blue-400"
-            required
-          />
+
           <input
             type="file"
             name="photo"
@@ -89,7 +83,6 @@ const Brands = () => {
             <tr>
               <th className="p-2 border">Photo</th>
               <th className="p-2 border">Name</th>
-              <th className="p-2 border">URL</th>
               <th className="p-2 border">Action</th>
             </tr>
           </thead>
@@ -110,9 +103,6 @@ const Brands = () => {
                   )}
                 </td>
                 <td className="p-2 border">{brand.name}</td>
-                <td className="p-2 border">
-                  <a href={brand.url}>{brand.url}</a>
-                </td>
                 <td className="p-2 border">
                   <div className="flex items-center justify-around gap-3">
                     <button
