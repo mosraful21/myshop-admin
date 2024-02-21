@@ -237,7 +237,6 @@ const AddProduct = () => {
             className="w-full p-1.5 border border-gray-400 rounded-md focus:outline-blue-400"
             required
           >
-            <option value="Non Brand">Select Brand</option>
             {brands.map((brand, index) => (
               <option key={index} value={brand._id}>
                 {brand.name}
@@ -436,14 +435,13 @@ const AddProduct = () => {
 
         {/* New Product */}
         <div className="space-y-1">
-          <label className="font-semibold">New / Old (Optional)</label>
+          <label className="font-semibold">New Arrival (Optional)</label>
           <select
             name="newProduct"
             className="w-full p-1.5 border border-gray-400 rounded-md focus:outline-blue-400"
           >
             <option value={false}>Select Option</option>
-            <option value={true}>New</option>
-            <option value={false}>Old</option>
+            <option value={true}>ON</option>
           </select>
         </div>
 
@@ -456,7 +454,6 @@ const AddProduct = () => {
           >
             <option value={false}>Select Option</option>
             <option value={true}>ON</option>
-            <option value={false}>OFF</option>
           </select>
         </div>
       </div>

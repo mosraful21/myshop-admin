@@ -72,12 +72,11 @@ const Products = () => {
               <th className="border">SL</th>
               <th className="border">Photo_&_Name</th>
               <th className="border">Category</th>
-              <th className="border">Sub_Category</th>
               <th className="border">Brand</th>
               <th className="border">Price</th>
               <th className="border">Discount</th>
-              <th className="border">Total_Quantity</th>
               <th className="border">Selling_Price</th>
+              <th className="border">Quantity</th>
               <th className="border">Status</th>
               <th className="border">Action</th>
             </tr>
@@ -85,7 +84,7 @@ const Products = () => {
 
           <tbody>
             {productData?.map((product, index) => (
-              <tr key={index}>
+              <tr key={index} className="capitalize">
                 <td className="p-1 border">
                   {currentPage * itemsPerPage + index + 1}
                 </td>
@@ -95,10 +94,9 @@ const Products = () => {
                     alt=""
                     className="w-12 h-12"
                   />
-                  {product.name}
+                  <span className="line-clamp-2">{product.name}</span>
                 </td>
                 <td className="p-1 border">{product.category.name}</td>
-                <td className="p-1 border">{product.subCategory.name}</td>
                 <td className="p-1 border">{product.brand.name}</td>
                 <td className="p-1 border">
                   {product.price}
@@ -108,11 +106,11 @@ const Products = () => {
                   {product.discount ? product.discount : "00"}
                   <span className="font-serif ml-1">৳</span>
                 </td>
-                <td className="p-1 border">{product.totalQuantity}</td>
                 <td className="p-1 border">
                   {product.price - product.discount}
                   <span className="font-serif ml-1">৳</span>
                 </td>
+                <td className="p-1 border">{product.totalQuantity}</td>
                 <td className="p-1 border">{String(product.status)}</td>
                 <td className="p-1 border">
                   <div className="flex items-center gap-1.5">
