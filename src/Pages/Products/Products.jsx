@@ -24,7 +24,7 @@ const Products = () => {
   };
 
   const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 7;
+  const itemsPerPage = 10;
   const startIndex = currentPage * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const productData = products?.slice(startIndex, endIndex);
@@ -68,8 +68,9 @@ const Products = () => {
       <div className="overflow-x-auto mt-1 bg-white box-shadow rounded-b-lg">
         <table className="min-w-full bg-white border border-gray-300">
           <thead>
-            <tr className="text-left">
+            <tr className="text-center">
               <th className="border">SL</th>
+              <th className="border">ID(Sku)</th>
               <th className="border">Photo_&_Name</th>
               <th className="border">Category</th>
               <th className="border">Brand</th>
@@ -84,10 +85,11 @@ const Products = () => {
 
           <tbody>
             {productData?.map((product, index) => (
-              <tr key={index} className="capitalize">
+              <tr key={index} className="text-center capitalize">
                 <td className="p-1 border">
                   {currentPage * itemsPerPage + index + 1}
                 </td>
+                <td className="p-1 border uppercase">{product.sku}</td>
                 <td className="p-1 border flex flex-wrap gap-1">
                   <img
                     src={photo + product.photos[0]}
@@ -113,7 +115,7 @@ const Products = () => {
                 <td className="p-1 border">{product.totalQuantity}</td>
                 <td className="p-1 border">{String(product.status)}</td>
                 <td className="p-1 border">
-                  <div className="flex items-center gap-1.5">
+                  <div className="flex items-center justify-center gap-1">
                     <Link to={`/dashboard/product/view/${product._id}`}>
                       <MdOutlineRemoveRedEye className="border text-blue-500 border-blue-500 hover:text-blue-700 cursor-pointer rounded w-6 h-6" />
                     </Link>

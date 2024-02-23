@@ -126,7 +126,7 @@ const SubCategories = () => {
                   )}
                 </td>
                 <td className="p-2 border">{subCategory.name}</td>
-                <td className="p-2 border">{subCategory.category.name}</td>
+                <td className="p-2 border">{subCategory.category?.name}</td>
                 <td className="p-2 border">
                   <div className="flex items-center justify-around gap-3">
                     <button

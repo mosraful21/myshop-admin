@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import AdminLogin from "../Pages/Users/Admin/AdminLogin";
+// import AdminLogin from "../Pages/Users/Admin/AdminLogin";
 import AdminLayout from "../Layout/AdminLayout";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import Admin from "../Pages/Users/Admin/Admin";
@@ -16,13 +16,13 @@ import ViewProduct from "../Pages/Products/ViewProduct";
 import UpdateProduct from "../Pages/Products/UpdateProduct";
 
 const routes = createBrowserRouter([
+  // {
+  //   path: "/",
+  //   element: <AdminLogin />,
+  //   loader: () => fetch("http://localhost:3000/api/admin"),
+  // },
   {
     path: "/",
-    element: <AdminLogin />,
-    loader: () => fetch("http://localhost:3000/api/admin"),
-  },
-  {
-    path: "/dashboard",
     element: <AdminLayout />,
     children: [
       {

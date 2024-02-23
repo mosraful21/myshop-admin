@@ -114,6 +114,25 @@ const AddProduct = () => {
   };
   /****************** Variations table data Function End *************************/
 
+  /**************** Stock Keeping Unit (SKU) Function Start **********************/
+  const [sku, setSku] = useState("");
+
+  const generateSKU = () => {
+    const characters = "0123456789";
+    let result = "";
+    const charactersLength = characters.length;
+    for (let i = 0; i < 6; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  };
+
+  const handleGenerateSKU = () => {
+    const generatedSKU = generateSKU();
+    setSku(generatedSKU);
+  };
+  /***************** Stock Keeping Unit (SKU) Function End ***********************/
+
   /****************** Image Upload Function Start *************************/
   const [images, setImages] = useState([]);
 
@@ -417,6 +436,29 @@ const AddProduct = () => {
             placeholder="Minimum Order Quantity (1)"
             defaultValue={1}
             className="w-full p-1.5 border border-gray-400 rounded-md focus:outline-blue-400"
+            required
+          />
+        </div>
+
+        {/* Stock Keeping Unit (SKU) */}
+        <div className="space-y-1">
+          <label className="font-semibold flex items-center">
+            Sku
+            <span className="text-orange-500">*</span>
+            <p
+              onClick={handleGenerateSKU}
+              className="text-sm ml-1 text-green-600 font-semibold cursor-pointer"
+            >
+              (Auto Generate)
+            </p>
+          </label>
+          <input
+            type="text"
+            name="sku"
+            placeholder="Click Auto Generate"
+            className="w-full p-1.5 border border-gray-400 rounded-md focus:outline-blue-400"
+            defaultValue={sku}
+            readOnly
             required
           />
         </div>
