@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 
 const UpdateProduct = () => {
@@ -6,11 +6,60 @@ const UpdateProduct = () => {
   const [product, setProduct] = useState(loadedData);
   const navigate = useNavigate();
 
+  const [category, setCategory] = useState([]);
+  const [subCategory, setSubCategory] = useState([]);
+  const [brands, setBrands] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(
+    product.category || ""
+  );
+  const [selectedSubCategory, setSelectedSubCategory] = useState(
+    product.subCategory || ""
+  );
+  const [selectedBrands, setSelectedBrands] = useState(product.brand || "");
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/categories")
+      .then((res) => res.json())
+      .then((data) => setCategory(data));
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/subCategories")
+      .then((res) => res.json())
+      .then((data) => setSubCategory(data));
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/brands")
+      .then((res) => res.json())
+      .then((data) => setBrands(data));
+  }, []);
+
+  const handleCategoryChange = (event) => {
+    const newCategory = event.target.value;
+    setSelectedCategory(newCategory);
+  };
+
+  const handleSubCategoryChange = (event) => {
+    setSelectedSubCategory(event.target.value);
+  };
+
+  const handleBrandChange = (event) => {
+    setSelectedBrands(event.target.value);
+  };
+
+  const filteredSubCategory = subCategory.filter(
+    (subCate) => subCate.category._id === selectedCategory
+  );
+
   const handleUpdated = (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
     const details = form.details.value;
+    const category = form.category.value;
+    const subCategory = form.subCategory.value;
+    const brand = form.brand.value;
     const price = form.price.value;
     const discount = form.discount.value;
     const warranty = form.warranty.value;
@@ -23,6 +72,9 @@ const UpdateProduct = () => {
       name,
       details,
       price,
+      category,
+      subCategory,
+      brand,
       discount,
       warranty,
       totalQuantity,
@@ -80,6 +132,65 @@ const UpdateProduct = () => {
       </div>
 
       <div className="grid md:grid-cols-3 grid-cols-1 gap-x-5 gap-y-2">
+        {/* Category  */}
+        <div className="space-y-1">
+          <label className="font-semibold">
+            Category<span className="text-orange-500">*</span>
+          </label>
+          <select
+            name="category"
+            className="w-full p-1.5 border border-gray-400 rounded-md focus:outline-blue-400"
+            value={selectedCategory}
+            onChange={handleCategoryChange}
+            required
+          >
+            <option value="">Select Category</option>
+            {category.map((cate, index) => (
+              <option key={index} value={cate._id}>
+                {cate.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Sub Category */}
+        <div className="space-y-1">
+          <label className="font-semibold">Sub Category</label>
+          <select
+            name="subCategory"
+            className="w-full p-1.5 border border-gray-400 rounded-md focus:outline-blue-400"
+            value={selectedSubCategory}
+            onChange={handleSubCategoryChange}
+          >
+            <option value="">Select Sub Category</option>
+            {filteredSubCategory.map((subCate, index) => (
+              <option key={index} value={subCate._id}>
+                {subCate.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Brand */}
+        <div className="space-y-1">
+          <label className="font-semibold">
+            Brand<span className="text-orange-500">*</span>
+          </label>
+          <select
+            name="brand"
+            className="w-full p-1.5 border border-gray-400 rounded-md focus:outline-blue-400"
+            value={selectedBrands}
+            onChange={handleBrandChange}
+            required
+          >
+            {brands.map((brand, index) => (
+              <option key={index} value={brand._id}>
+                {brand.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
         {/* Price */}
         <div className="space-y-1">
           <label className="font-semibold">
@@ -183,9 +294,8 @@ const UpdateProduct = () => {
             className="w-full p-1.5 border border-gray-400 rounded-md focus:outline-blue-400"
             defaultValue={product?.newProduct}
           >
-            <option value="">Select Option</option>
-            <option value={true}>New</option>
-            <option value={false}>Old</option>
+            <option value={false}>OFF</option>
+            <option value={true}>ON</option>
           </select>
         </div>
 
@@ -197,9 +307,8 @@ const UpdateProduct = () => {
             className="w-full p-1.5 border border-gray-400 rounded-md focus:outline-blue-400"
             defaultValue={product?.flashSale}
           >
-            <option value="">Select Option</option>
-            <option value={true}>ON</option>
             <option value={false}>OFF</option>
+            <option value={true}>ON</option>
           </select>
         </div>
       </div>

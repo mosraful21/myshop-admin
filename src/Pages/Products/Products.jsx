@@ -70,7 +70,7 @@ const Products = () => {
           <thead>
             <tr className="text-center">
               <th className="border">SL</th>
-              <th className="border">ID(Sku)</th>
+              <th className="border">ID(Skuy)</th>
               <th className="border">Photo_&_Name</th>
               <th className="border">Category</th>
               <th className="border">Brand</th>
@@ -79,6 +79,8 @@ const Products = () => {
               <th className="border">Selling_Price</th>
               <th className="border">Quantity</th>
               <th className="border">Status</th>
+              <th className="border">New</th>
+              <th className="border">FlashSale</th>
               <th className="border">Action</th>
             </tr>
           </thead>
@@ -108,12 +110,20 @@ const Products = () => {
                   {product.discount ? product.discount : "00"}
                   <span className="font-serif ml-1">৳</span>
                 </td>
-                <td className="p-1 border">
+                <td className="p-1 border font-semibold">
                   {product.price - product.discount}
                   <span className="font-serif ml-1">৳</span>
                 </td>
                 <td className="p-1 border">{product.totalQuantity}</td>
-                <td className="p-1 border">{String(product.status)}</td>
+                <td className="p-1 border">
+                  {product.status === true ? "ON" : "OFF"}
+                </td>
+                <td className="p-1 border">
+                  {product.newProduct === true ? "ON" : "OFF"}
+                </td>
+                <td className="p-1 border">
+                  {product.flashSale === true ? "ON" : "OFF"}
+                </td>
                 <td className="p-1 border">
                   <div className="flex items-center justify-center gap-1">
                     <Link to={`/dashboard/product/view/${product._id}`}>

@@ -482,7 +482,7 @@ const AddProduct = () => {
             name="newProduct"
             className="w-full p-1.5 border border-gray-400 rounded-md focus:outline-blue-400"
           >
-            <option value={false}>Select Option</option>
+            <option value={false}>OFF</option>
             <option value={true}>ON</option>
           </select>
         </div>
@@ -494,7 +494,7 @@ const AddProduct = () => {
             name="flashSale"
             className="w-full p-1.5 border border-gray-400 rounded-md focus:outline-blue-400"
           >
-            <option value={false}>Select Option</option>
+            <option value={false}>OFF</option>
             <option value={true}>ON</option>
           </select>
         </div>
