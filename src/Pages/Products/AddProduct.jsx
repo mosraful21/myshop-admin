@@ -340,7 +340,7 @@ const AddProduct = () => {
               >
                 <option value="">Select Color</option>
                 {color.map((color, index) => (
-                  <option key={index} value={color.code}>
+                  <option key={index} value={`${color.code}-${color.name}`}>
                     {color.name}
                   </option>
                 ))}
@@ -380,9 +380,15 @@ const AddProduct = () => {
                       <tr key={index} className="bg-gray-100">
                         <td className="p-1.5 border border-gray-600">
                           <span
-                            className="inline-block w-4 h-4 ml-2 rounded-sm"
-                            style={{ backgroundColor: `${data?.color}` }}
-                          ></span>
+                            className="flex items-center w-4 h-4 rounded-sm"
+                            style={{
+                              backgroundColor: `${data?.color.split("-")[0]}`,
+                            }}
+                          >
+                            <span className="ml-5">
+                              {data?.color.split("-")[1]}
+                            </span>
+                          </span>
                         </td>
                         <td className="p-1.5 border border-gray-600">
                           {data?.quantity}
